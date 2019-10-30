@@ -1,0 +1,12 @@
+{
+  "name": "vue-origin",
+  "version": "1.0.0",
+  "description": "vue-origin",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

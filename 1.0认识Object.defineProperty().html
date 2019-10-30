@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p id="name"></p>
+</body>
+<script>
+    //@语法
+    // Object.defineProperty(obj, prop, descriptor)
+    //     参数
+    //     obj
+    //     要在其上定义属性的对象。
+    // prop
+    //     要定义或修改的属性的名称。
+    // descriptor
+    //     将被定义或修改的属性描述符。
+
+    let obj = {}
+
+    Object.defineProperty(obj, 'name', {
+        get() { //得到要替换的dom内容,返回
+            return document.querySelector('#name').innerHTML
+        },
+        set(v) {//
+            return document.querySelector('#name').innerHTML = v
+        }
+    })
+    console.log(obj)
+    obj['name'] = 1
+    obj.name = 2
+</script>
+</html>
