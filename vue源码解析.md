@@ -11,3 +11,10 @@
 - 编译compile 实现编译器
 
 ##### Vue源码是一个基于flow的一个JavaScript的代码检查工具
+
+### new MVVM({})
+- 基于Object.DefineProperty() 对数据的劫持监听
+    - get劫持数据，拿到监听对象中属性的数据
+    - set对数据监听并且控制更改数据，然后发出通知给Dependence
+- Dep接受到通知，通知观察者watcher，watcher相当于Dep的粉丝，Youtube订阅者，时刻接收来自Observer传给Dep的数据变化通知
+- 然后 watcher 去更新视图 Update
