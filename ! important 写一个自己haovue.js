@@ -11,6 +11,10 @@ class Hue {
         console.log(this.data)
         //遍历传进来的对象的data值,对$data进行观察监听
         this.observe(this.data)
+        new watcher()
+        this.data.name
+        new watcher()
+        this.data.age
     }
 
     //数据劫持，监听
@@ -39,8 +43,8 @@ class Hue {
                 get() {
                     //在实例一个watcher的时候。dep.target = watcher 然后watcher被推入到依赖的数组里面然后遍历并且执行update
                     //这个属性被读取一次，就要往里面推送一个watcher 所以这个要写在getter里面
-                    if (dep.target) {
-                        dep.addDep(dep.target)
+                    if (Dep.target) {
+                        dep.addDep(Dep.target)
                     }else{
                         console.log('watcher依赖实例化失败')
                     }
@@ -89,6 +93,8 @@ class watcher {
     constructor() {
         //将当前watcher的实例指定到Dep的静态属性target
         Dep.target = this
+        console.log(Dep.target)
+
     }
     update() {
         console.log("属性更新了")

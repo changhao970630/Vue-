@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //设置一个类中既有静态方法，静态属性，也有普通方法普通属性
+    class test {
+        constructor(name){
+            //构造器中的属性直接通过实例访问就好了
+            this.name = name
+        }
+        static property = "静态属性"
+        static foo() {
+            console.log("我是一个静态方法")
+        }
+    }
+    console.log(test.property)//静态属性
+    test.foo() //我是一个静态方法
+    //=======得出  静态方法可以直接通过类调用，然后我们看看实例化的类能不能调用静态方法
+
+    let t = new test("1")
+    console.log(t.name)
+    // t.foo() // t.foo is not a function
+    console.log(t.property)//undefined
+    //=======得出   实例化的类  不能访问静态属性喝=和方法
+    test.a = "1"//这种方式和直接给类添加静态方法没什么区别，目前我理解的
+
+    console.log(test.a)
+
+</script>
+</html>

@@ -18,3 +18,9 @@
     - set对数据监听并且控制更改数据，然后发出通知给Dependence
 - Dep接受到通知，通知观察者watcher，watcher相当于Dep的粉丝，Youtube订阅者，时刻接收来自Observer传给Dep的数据变化通知
 - 然后 watcher 去更新视图 Update
+
+- 代码流程  
+- when(当)当前一个属性，改变的时候，会先 实例化一个watcher，
+然后 当前属性的dep类的target属性就是这个实例化的watcher（具有update更新的普通方法）
+，对数据进行劫持的时候，getter会执行实例化一个，dep实例（带有addDep方法，将watcher依赖放到dep里面）
+然后在setter函数中，判断需不需要更新，需要更新数据，就遍历里面的watcher调用update方法，完成update的更新
