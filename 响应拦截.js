@@ -11,10 +11,7 @@ class Hue {
         console.log(this.data)
         //遍历传进来的对象的data值,对$data进行观察监听
         this.observe(this.data)
-        new watcher()
-        this.data.name
-        new watcher()
-        this.data.age
+        new Compile(this.$options.el,this)
     }
 
     //数据劫持，监听
@@ -88,7 +85,7 @@ class Dep {
     }
 }
 
-//Watcher具体做具体更新
+//Watcher具体做具体更新update
 class watcher {
     constructor() {
         //将当前watcher的实例指定到Dep的静态属性target

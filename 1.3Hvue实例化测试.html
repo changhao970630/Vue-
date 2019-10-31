@@ -8,12 +8,22 @@
     <title>Document</title>
 </head>
 <body>
-
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h1>{{name}}</h1>
+        <p>{{sex}}</p>
+        <p>{{sex}}</p>
+        <h1>{{age}}</h1>
+        <h1>{{age}}</h1>
+    </div>
 </body>
-<script src="!%20important%20写一个自己haovue.js">
+
+<script src="./!compile编译器.js"></script>
+<script src="./响应拦截.js">
 </script>
 <script>
     let hvue = new Hue({
+        el:'#app',
         data: {
             name: "1常昊",
             age: "12",
