@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    function* listColors(){
+        yield "red";
+        yield "blue";
+        yield "pink";
+    }
+
+    const color = listColors()
+    console.log(color) //listColors {<suspended>} suspended暂停的意思
+    console.log(color.next());//{value: "red", done: false}
+    console.log(color.next());//{value: "blue", done: false}
+    console.log(color.next());//{value: "pink", done: false}
+    console.log(color.next());//{value: undefined, done: true}
+    //可以看出其实这个generator 函数得到的还是一个iterator遍历器
+
+    //也可以在里面做一些运算
+
+    function* num() {
+        let i  = 0
+        yield i
+        i++
+        yield i
+        // return //可以中断
+        i++
+        yield i
+        i++
+        yield i
+    }
+    let num1 = num()
+    console.log(num1.next());//{value: 0, done: false}
+    console.log(num1.next());//{value: 1, done: false}
+    console.log(num1.next());//{value: 2, done: false}
+    console.log(num1.next());//{value: 3, done: false}
+    console.log(num1.next());//{value: undefined, done: true}
+
+    const fam = ['father','mother','brother','son']
+
+    function* famMaker(arr) {
+        for(item of arr){
+          yield item
+        }
+    }
+
+    let iteratorFam = famMaker(fam)
+    console.log(iteratorFam.next());//{value: undefined, done: true}
+    console.log(iteratorFam.next());//{value: "mother", done: false}
+    console.log(iteratorFam.next());//{value: "brother", done: false}
+    console.log(iteratorFam.next());//{value: "son", done: false}
+    console.log(iteratorFam.next());//{value: "son", done: false}
+</script>
+</html>

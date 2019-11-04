@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    const color = ['red', 'blue', 'green', 'yellow']
+    // 手动实现遍历器
+    //     let myIterator = (arr)=>{
+    //         let index = 0
+    //         return {
+    //             next(){
+    //                 console.log(index)
+    //                 return index < arr.length?{value:arr[index++],done:false}:{value:undefined,done:true}
+    //             }
+    //         }
+    //     }
+    // let co = myIterator(color)
+    //    console.log( co.next()) //{value: "red", done: false}
+    //    console.log( co.next())//{value: "blue", done: false}
+    //    console.log( co.next())//{value: "green", done: false}
+    //    console.log( co.next())//{value: "yellow", done: false}
+    //    console.log( co.next())//{value: undefined, done: true}
+    console.log(color)
+    let co = color[Symbol.iterator]() //数组上的Symbol.iterator属性方法
+    console.log(co.next()) //{value: "red", done: false}
+    console.log(co.next())//{value: "blue", done: false}
+    console.log(co.next())//{value: "green", done: false}
+    console.log(co.next())//{value: "yellow", done: false}
+    console.log(co.next())//{value: undefined, done: true}
+
+    for(item of color){ //for of 就是调用iterator
+        console.log(item)
+    }
+</script>
+</html>

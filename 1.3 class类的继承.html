@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    let action = "bark"
+    class allDog {
+        constructor(name,age){
+            this.name= name+1
+            this.age = age
+        }
+        [action](){
+            console.log("bark!bark!")
+        }
+        speak(){
+            console.log("i am dog")
+        }
+    }
+    let cq = new allDog('柴犬',2)
+    window.console.log(cq)
+
+
+    class smy extends allDog {
+        constructor(name,age){
+            super(name) //继承父类构造器构造器方法
+            this.age = age
+        }
+        eat(){
+            window.console.log("Meat")
+        }
+        speak() {
+            console.log('i am smy');//和父类（超类）方法同名会覆盖超类的方法
+        }
+    }
+    let smy1 = new smy("萨摩耶",3)
+    console.log(smy1)// name: "萨摩耶1"age: 3
+    smy1.speak()//i am smy
+</script>
+</html>
