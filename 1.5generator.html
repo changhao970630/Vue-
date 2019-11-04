@@ -5,13 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>generator生成器</title>
 </head>
 <body>
 
 </body>
 <script>
-    function* listColors(){
+    function* listColors(){ //generator函数调用只会生成一个generator函数。调用一次next()执行到一个yield
         yield "red";
         yield "blue";
         yield "pink";

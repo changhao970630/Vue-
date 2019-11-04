@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<Button id="getUser">获取用户列表</Button>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let ajax = (url) => {
+        axios({
+            url, method: "get"
+        }).then(res => {
+            f1.next(res.data)  //这里就是第一次调用完成之后 直接执行生成器产生的遍历器的next方法，顺便把这次请求产生的数据传入下一次next
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    function* foo() {
+        const user = yield ajax("https://api.github.com/users")
+        console.log(user)
+        const userFirst = yield ajax(`https://api.github.com/users/${user[1].login}`)
+        console.log(userFirst)
+
+    }
+
+    let f1 = foo()
+    document.querySelector("#getUser").onclick = () => {
+        f1.next()
+    }
+</script>
+</html>

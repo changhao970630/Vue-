@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //重写默认操作，定义自己逻辑
+    const person = {name: "changhao", age: 22}
+    // new Proxy(target,handler) target:要代理的目标对象 handler:方法操作
+    const personProxy = new Proxy(person, {
+        get(target,key){
+            return target[key]
+        },
+        set(target,key,value){
+            target[key] = value
+        }
+    })
+    personProxy.name = 'asd';
+    console.log(personProxy)
+    //和Object.defineProperty()很像
+</script>
+</html>
